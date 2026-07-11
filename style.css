@@ -1,4 +1,77 @@
-* {
-    font-family: 'Comic Sans MS', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+.divWelcome {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+.logoToTake {
+    height: 100px;
+}
+
+.centerText {
     text-align: center;
+}
+
+body {
+    margin: 0;
+    background-color: #fff;
+}
+
+.divCenter {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    justify-self: center;
+}
+
+* {
+    font-family: "Instrument Sans", sans-serif;
+}
+
+p{
+    margin: 0;
+}
+
+.loginButtons {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    bottom: 48px;
+    gap: 10px;
+}
+.headerCommon {
+    width: 100vw - 10px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+
+}
+
+.headerLabel {
+    font-weight: 600;
+    font-size: 18px;
+    width: 85%;
+    text-align: center;
+}
+.transparentButton {
+    border: 0;
+    background-color: #ffffff00;
+    padding: 10px;
+}
+.button {
+    border: 0;
+    padding: 16px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-radius: 12px;
+    font-size: 16px;
+    background-color: #d7d7d7;
+    font-weight: 500;
+}
+
+.green {
+    background-color: #00B944;
+    color: #fff;
 }
