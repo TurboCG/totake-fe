@@ -42,13 +42,40 @@ p{
     gap: 10px;
 }
 .headerCommon {
-    width: 100vw - 10px;
+    top: 0;
+    width: 95vw;
     padding: 10px;
     display: flex;
     align-items: center;
-
+    background-color: #ffffffaf;
+    backdrop-filter: blur(20px);
+    position: fixed;
 }
-
+.logInButton {
+    position: absolute;
+    bottom: 25px;
+    align-self: center;
+}
+.input {
+    border: 0;
+    background-color: rgba(0, 0, 0, 0.100);
+    padding: 15px;
+    border-radius:12px;
+}
+.inputLabel {
+    color: #000000c3;
+    margin: 0;
+    font-weight: 300;
+}
+.divInput {
+    display: flex;
+    flex-direction: column  ;
+    padding: 10px;
+    gap: 10px;
+}
+.marginTopHeader {
+    margin-top: 10vh;
+}
 .headerLabel {
     font-weight: 600;
     font-size: 18px;
