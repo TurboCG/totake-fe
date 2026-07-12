@@ -53,7 +53,7 @@ p{
 }
 .logInButton {
     position: absolute;
-    bottom: 25px;
+    bottom: 10vh;
     align-self: center;
 }
 .input {
@@ -69,12 +69,12 @@ p{
 }
 .divInput {
     display: flex;
-    flex-direction: column  ;
-    padding: 10px;
+    flex-direction: column;
+    padding: 15px;
     gap: 10px;
 }
 .marginTopHeader {
-    margin-top: 10vh;
+    margin-top: 8vh;
 }
 .headerLabel {
     font-weight: 600;
