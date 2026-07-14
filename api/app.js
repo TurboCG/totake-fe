@@ -5,16 +5,16 @@ import "dotenv/config"
 const app = express();
 const sql = neon(process.env.DATABASE_URL);
 
-// Define an array of product objects
-const products = [
-    { id: 1, name: "Laptop", price: 9000 }, 
-    { id: 2, name: "Phone", price: 900000 }  
-];
+app.get("/api/v1/products", async (req, res) => {
+    try {
+        const stock = await sql`SELECT * FROM stock`;
+        res.json(stock); 
+    } catch (error){
+        console.error("che.. anda mal")
+        res.status(500).json({error: "Internal Server Error"})
+    }
+});
 
-// ruta productos dispobivles
-app.get("/api/v1/products", (req, res) => {
-    res.json(products);  
-})
 // ruta l9ogin :v
 app.get("/api/v1/login", (req, res) => {
     res.json("nigga");  
