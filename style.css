@@ -59,6 +59,41 @@ p{
 .searchBarSlightlyTransparentTone {
     filter: opacity(0.6);
 }
+.navBarButton {
+    background-color: #00000000;
+    border: none;
+    width: 35%;
+    height: min-content;
+}
+.navBarMain{
+    width: 95vw;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    justify-content: center;
+    padding: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.active {
+    filter: invert(42%) sepia(63%) saturate(2627%) hue-rotate(117deg) brightness(101%) contrast(102%);
+}
+.loadingIndicator {
+    position: absolute;
+    left: 45%;
+    right: 45%;
+    top: 45%;
+    animation: spin 0.4s linear infinite;
+    filter: brightness(0);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.inactive {
+    filter: brightness(0) opacity(0.7);
+}
 .searchBar {
     background-color: #f5f5f5;
     display: flex;
