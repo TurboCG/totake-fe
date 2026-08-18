@@ -1,6 +1,9 @@
 import { neon } from '@neondatabase/serverless';
 import express from 'express';
-import "dotenv/config"
+import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
+import "dotenv/config";
+import { sql } from "./db.js";
 // Create an Express application instance
 const app = express();
 const sql = neon(process.env.DATABASE_URL);
