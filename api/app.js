@@ -6,7 +6,6 @@ import "dotenv/config";
 import { sql } from "./db.js";
 // Create an Express application instance
 const app = express();
-const sql = neon(process.env.DATABASE_URL);
 const users = [];
 app.get("/api/v1/products", async (req, res) => {
     try {
