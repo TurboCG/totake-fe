@@ -4,7 +4,7 @@ import "dotenv/config"
 // Create an Express application instance
 const app = express();
 const sql = neon(process.env.DATABASE_URL);
-
+const users = [];
 app.get("/api/v1/products", async (req, res) => {
     try {
         const stock = await sql`SELECT * FROM stock`;
@@ -17,12 +17,27 @@ app.get("/api/v1/products", async (req, res) => {
 
 // ruta l9ogin :v
 app.get("/api/v1/login", (req, res) => {
-    res.json("nigga");  
+    const {dni, passwd} = req.query;
+    if (!dni || !passwd){
+        return res.status(400).json("No hay dni :v")
+    }
+    
+    const passwordHash = await bcrypt.hash(passwd, SALT_ROUNDS);
+    const existente = await sql`SELECT id FROM users WHERE dni1 = ${dni}`;
+    if (existente > 0){
+        return res.status(409).json({ error: "Usuario ya registrado" });
+    }
+    await sql`
+            INSERT INTO users (dni, password)
+            VALUES (${dni}, ${passwordHash})
+        `;
+    res.status(201).json({ mensaje: "Usuario registrado con éxito", dni, email });
 });
 app.get("/api/v1/getusers", async (req, res) => {
     try {
-        const users = await sql`SELECT * FROM users`;
-        res.json(users); 
+        const userss = await sql`SELECT * FROM users`;
+        users = userss;
+        res.json(userss);
     } catch (error){
         console.error("che.. anda mal")
         res.status(500).json({error: "Internal Server Error"})
@@ -33,7 +48,6 @@ app.get('/', (req, res) => {
   res.send('welcome to the queque');  // Sends 'Welcome to my API' as the response
 });
  
-// Start the server on port 3000 and log a message to the consolecc
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, '0.0.0.0', () => {
