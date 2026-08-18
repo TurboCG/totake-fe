@@ -18,7 +18,7 @@ app.get("/api/v1/products", async (req, res) => {
 });
 
 // ruta l9ogin :v
-app.get("/api/v1/login", (req, res) => {
+app.get("/api/v1/login", async (req, res) => {
     const {dni, passwd} = req.query;
     if (!dni || !passwd){
         return res.status(400).json("No hay dni :v")
