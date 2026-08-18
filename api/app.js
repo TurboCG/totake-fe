@@ -7,6 +7,12 @@ import { sql } from "./db.js";
 // Create an Express application instance
 const app = express();
 const users = [];
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+});
+
 app.get("/api/v1/products", async (req, res) => {
     try {
         const stock = await sql`SELECT * FROM stock`;
