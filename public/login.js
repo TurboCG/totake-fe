@@ -25,12 +25,18 @@ async function login(dni, passwd) {
     }
 
 
-function loginPress(){
-try {
-        const resultado = await login(inputDni.value, inputPasswd.value);
-        console.log("Respuesta del login:", resultado);
-    } catch (error) {
-        console.error("Error al iniciar sesión:", error);
+async function loginPress(){
+    const inputDni = document.getElementById("labelDni");
+    const inputPasswd = document.getElementById("labelPasswd");
+    if (!inputDni || !inputPasswd) {
+        console.error("No se encontraron los elementos en el DOM.");
+        return;
     }
-}
+    try {
+            const resultado = await login(inputDni.value, inputPasswd.value);
+            console.log("Respuesta del login:", resultado);
+        } catch (error) {
+            console.error("Error al iniciar sesión:", error);
+        }
+    }
 document.getElementById("loginButton").onclick = loginPress;
