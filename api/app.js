@@ -31,7 +31,7 @@ app.post("/api/v1/login", async (req, res) => {
         return res.status(400).json({ error: "Faltan credenciales (dni o contraseña)" });
     }
     try {
-        const usuarios = await sql`SELECT id, password FROM users WHERE dni = ${dni}`;
+        const usuarios = await sql`SELECT userid, password FROM users WHERE dni = ${dni}`;
         
         if (usuarios.length === 0) {
             return res.status(404).json({ error: "Usuario no encontrado" });
@@ -47,7 +47,7 @@ app.post("/api/v1/login", async (req, res) => {
 
         return res.status(200).json({ 
             mensaje: "Login exitoso", 
-            userId: usuario.id 
+            userId: usuario.userid 
         });
 
     } catch (error) {
