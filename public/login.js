@@ -18,7 +18,9 @@ async function login(dni, passwd) {
 
             const data = JSON.parse(rawText);
             console.log("Login exitoso:", data);
-
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("userId", data.userId);
+            window.location.href = "mainApp.html";
         } catch (error) {
             console.error("Error en el proceso de login:", error);
         }
