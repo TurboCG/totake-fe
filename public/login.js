@@ -26,8 +26,11 @@ async function login(dni, passwd) {
 
 
 function loginPress(){
-    var inputDni = document.getElementById("labelDni");
-    var inputPasswd = document.getElementById("labelPasswd");
-    login(inputDni.value, inputPasswd.value);
+try {
+        const resultado = await login(inputDni.value, inputPasswd.value);
+        console.log("Respuesta del login:", resultado);
+    } catch (error) {
+        console.error("Error al iniciar sesión:", error);
+    }
 }
 document.getElementById("loginButton").onclick = loginPress;
