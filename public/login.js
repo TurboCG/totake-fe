@@ -21,6 +21,6 @@ async function login(dni, passwd) {
 function loginPress(){
     var inputDni = document.getElementById("labelDni");
     var inputPasswd = document.getElementById("labelPasswd");
-    login(inputDni, inputPasswd);
+    login(inputDni.value, inputPasswd.value);
 }
 document.getElementById("loginButton").onclick = loginPress;
