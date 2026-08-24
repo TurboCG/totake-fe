@@ -1,4 +1,5 @@
 async function login(dni, passwd) {
+    try{
     const res = await fetch("https://totake-be.onrender.com/api/v1/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -8,12 +9,18 @@ async function login(dni, passwd) {
             /* porque pinto */
         })
         });
-        const data = await res.json();
-        if (res.ok) {
-            console.log("Token:", data.token);
-            localStorage.setItem("token", data.token); // guardalo para requests futuros
-        } else {
-            console.error(data.error);
+        const rawText = await response.text();
+
+            if (!response.ok) {
+            console.error(`Error HTTP ${response.status}:`, rawText);
+            return;
+            }
+
+            const data = JSON.parse(rawText);
+            console.log("Login exitoso:", data);
+
+        } catch (error) {
+            console.error("Error en el proceso de login:", error);
         }
     }
 
