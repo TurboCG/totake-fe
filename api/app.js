@@ -24,23 +24,35 @@ app.get("/api/v1/products", async (req, res) => {
     }
 });
 
-// ruta l9ogin :v
 app.post("/api/v1/login", async (req, res) => {
-    const {dni, passwd} = req.query;
-    if (!dni || !passwd){
-        return res.status(400).json("No hay dni :v")
+    const { dni, passwd } = req.body;
+    if (!dni || !passwd) {
+        return res.status(400).json({ error: "Faltan credenciales (dni o contraseña)" });
     }
-    
-    const passwordHash = await bcrypt.hash(passwd, SALT_ROUNDS);
-    const existente = await sql`SELECT id FROM users WHERE dni1 = ${dni}`;
-    if (existente > 0){
-        return res.status(409).json({ error: "Usuario ya registrado" });
+    try {
+        const usuarios = await sql`SELECT id, password FROM users WHERE dni = ${dni}`;
+        
+        if (usuarios.length === 0) {
+            return res.status(404).json({ error: "Usuario no encontrado" });
+        }
+
+        const usuario = usuarios[0];
+
+        const passwordValida = await bcrypt.compare(passwd, usuario.password);
+
+        if (!passwordValida) {
+            return res.status(401).json({ error: "Contraseña incorrecta" });
+        }
+
+        return res.status(200).json({ 
+            mensaje: "Login exitoso", 
+            userId: usuario.id 
+        });
+
+    } catch (error) {
+        console.error("Error en login:", error);
+        return res.status(500).json({ error: "Error interno del servidor" });
     }
-    await sql`
-            INSERT INTO users (dni, password)
-            VALUES (${dni}, ${passwordHash})
-        `;
-    res.status(201).json({ mensaje: "Usuario registrado con éxito", dni, email });
 });
 app.get("/api/v1/getusers", async (req, res) => {
     try {
