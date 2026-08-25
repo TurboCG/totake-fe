@@ -66,6 +66,16 @@ app.get("/api/v1/getusers", async (req, res) => {
     }
      
 });
+app.get("/api/v1/getcolumns", async (req, res) => {
+    try {
+        const columns = await sql`SELECT * FROM sections`;
+        res.json(columns);
+    } catch (error){
+        console.error("Something gone wrong:", error)
+        res.status(500).json({error: "Internal Server Error"})
+    }
+     
+});
 app.get('/', (req, res) => {
   res.send('welcome to the queque');  // Sends 'Welcome to my API' as the response
 });
