@@ -13,6 +13,8 @@ async function login(dni, passwd) {
 
             if (!response.ok) {
             console.error(`Error HTTP ${response.status}:`, rawText);
+            document.getElementById("spinnerLogin").style.display = "none";
+            document.getElementById("labelLogin").style.display = "flex";
             return;
             }
 
@@ -28,6 +30,8 @@ async function login(dni, passwd) {
 
 
 async function loginPress(){
+    document.getElementById("spinnerLogin").style.display = "flex";
+    document.getElementById("labelLogin").style.display = "none";
     const inputDni = document.getElementById("labelDni");
     const inputPasswd = document.getElementById("labelPasswd");
     if (!inputDni || !inputPasswd) {
