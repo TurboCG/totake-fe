@@ -49,9 +49,14 @@ function crearColumna(col) {
         </div>
     `;
 
-    col.productos.forEach(producto => {
-        columnDiv.appendChild(crearArticulo(producto));
+    const scrollContainer = document.createElement("div");
+    scrollContainer.className = "scroll-productos";
+
+    (col.productos || []).forEach(producto => {
+        scrollContainer.appendChild(crearArticulo(producto));
     });
+
+    columnDiv.appendChild(scrollContainer);
 
     return columnDiv;
 }
@@ -61,7 +66,7 @@ function crearArticulo(producto) {
     article.className = "article";
 
     article.innerHTML = `
-        <img src="${producto.image}" style="padding: 15px; width: 80%;" alt="${producto.name}">
+        <img src="${producto.image}" style="padding: 15px; width: 80%; object-fit: cover;" alt="${producto.name}">
         <div style="display: flex; gap: 10px;">
             <div style="width: -webkit-fill-available;">
                 <h2 style="margin-bottom: 5px; margin-top: 5px; font-weight: normal;" class="titleArticle">${producto.name}</h2>

@@ -178,3 +178,11 @@ p{
     background-color: #00B944;
     color: #fff;
 }
+.scroll-productos {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 15px 15px 15px;
+    scroll-snap-type: x proximity;
+}
