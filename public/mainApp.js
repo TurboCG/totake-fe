@@ -13,10 +13,18 @@ async function cargarColumnas() {
     const contenedor = document.getElementById("content");
 
     try {
-        const res = await fetch("https://totake-be.onrender.com/api/v1/getcolumns");
-        const columnas = await res.json();
+        const [resColumnas, resProductos] = await Promise.all([
+            fetch("https://totake-be.onrender.com/api/v1/getcolumns"),
+            fetch("https://totake-be.onrender.com/api/v1/products")
+        ])
 
-        contenedor.innerHTML = ""; 
+        const columnas = await resColumnas.json();
+        const productos = await resProductos.json();
+        columnas.forEach(col => {
+            col.productos = productos.filter(p => p.columnId === col.id);
+        });
+
+        contenedor.innerHTML = "";
         columnas.forEach(col => {
             contenedor.appendChild(crearColumna(col));
         });
