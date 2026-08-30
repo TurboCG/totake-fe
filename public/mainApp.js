@@ -21,6 +21,7 @@ async function cargarColumnas() {
 
         const columnas = await resColumnas.json();
         const productos = await resProductos.json();
+        console.log(JSON.stringify(columnas, null, 2));
         columnas.forEach(col => {
             col.productos = productos.filter(p => p.columnId === col.id);
         });
