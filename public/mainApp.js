@@ -49,11 +49,13 @@ function crearColumna(col) {
         </div>
     `;
 
-    col.productos.forEach(producto => {
-        columnDiv.appendChild(crearArticulo(producto));
+    columnas.forEach(col => {
+        col.productos = productos.filter(p => p.columnId === col.id);
     });
 
-    return columnDiv;
+    const contenedor = document.getElementById("content");
+    contenedor.innerHTML = "";
+    columnas.forEach(col => contenedor.appendChild(crearColumna(col)));
 }
 
 function crearArticulo(producto) {
