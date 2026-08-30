@@ -1,3 +1,4 @@
+let token;
 document.addEventListener("DOMContentLoaded", () => {
     const token = localStorage.getItem("token");
 
