@@ -44,8 +44,8 @@ function crearColumna(col) {
 
     columnDiv.innerHTML = `
         <div>
-            <h1 style="margin-bottom: 5px;">${col.nombre}</h1>
-            <p style="margin-bottom: 15px;">${col.subtitulo || ""}</p>
+            <h1 style="margin-bottom: 5px;">${col.name}</h1>
+            <p style="margin-bottom: 15px;">${col.description || ""}</p>
         </div>
     `;
 
@@ -61,11 +61,11 @@ function crearArticulo(producto) {
     article.className = "article";
 
     article.innerHTML = `
-        <img src="${producto.imagen_url}" style="padding: 15px; width: 80%;" alt="${producto.nombre}">
+        <img src="${producto.image}" style="padding: 15px; width: 80%;" alt="${producto.name}">
         <div style="display: flex; gap: 10px;">
             <div style="width: -webkit-fill-available;">
-                <h2 style="margin-bottom: 5px; margin-top: 5px; font-weight: normal;" class="titleArticle">${producto.nombre}</h2>
-                <h2 style="margin-bottom: 0px; margin-top: 5px;" class="priceArticle">$${producto.precio}</h2>
+                <h2 style="margin-bottom: 5px; margin-top: 5px; font-weight: normal;" class="titleArticle">${producto.name}</h2>
+                <h2 style="margin-bottom: 0px; margin-top: 5px;" class="priceArticle">$${producto.price}</h2>
             </div>
             <img src="./res/buy.svg" style="align-self: end;" alt="Comprar">
         </div>
