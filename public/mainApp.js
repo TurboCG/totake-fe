@@ -69,8 +69,8 @@ function crearArticulo(producto) {
         <img src="${producto.image}" style="padding: 15px; width: 80%; object-fit: contain; height: 160px; " alt="${producto.name}">
         <div style="display: flex; gap: 10px;">
             <div style="width: -webkit-fill-available;">
-                <h2 style="margin-bottom: 5px; margin-top: 5px; font-weight: normal;" class="titleArticle">${producto.name}</h2>
-                <h2 style="margin-bottom: 0px; margin-top: 5px;" class="priceArticle">$${producto.price}</h2>
+                <h2 style="margin-bottom: 5px; margin-top: 5px; font-weight: normal; font-size: 20px;" class="titleArticle">${producto.name}</h2>
+                <h2 style="margin-bottom: 0px; margin-top: 5px;" class="priceArticle"; font-size: 20px;">$${producto.price}</h2>
             </div>
             <img src="./res/buy.svg" style="align-self: end;" alt="Comprar">
         </div>
