@@ -29,7 +29,7 @@ async function cargarColumnas() {
 }
 
 function crearColumna(col) {
-    const columnDiv = document.getElementById("content").createElement("div");
+    const columnDiv = document.createElement("div");
     columnDiv.className = "columnH";
 
     columnDiv.innerHTML = `
