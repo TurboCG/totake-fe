@@ -45,9 +45,16 @@ app.post("/api/v1/login", async (req, res) => {
             return res.status(401).json({ error: "Contraseña incorrecta" });
         }
 
-        return res.status(200).json({ 
-            mensaje: "Login exitoso", 
-            userId: usuario.userid 
+        const token = jwt.sign(
+            { userId: usuario.userid },
+            process.env.JWT_SECRET,
+            { expiresIn: "7d" }
+        );
+
+        return res.status(200).json({
+            mensaje: "Login exitoso",
+            userId: usuario.userid,
+            token: token
         });
 
     } catch (error) {
