@@ -23,7 +23,7 @@ async function cargarColumnas() {
         const productos = await resProductos.json();
         console.log(JSON.stringify(columnas, null, 2));
         columnas.forEach(col => {
-            col.productos = productos.filter(p => p.columnId === col.id);
+            col.productos = productos.filter(p => p.sectionid === col.id);
         });
 
         contenedor.innerHTML = "";
@@ -49,13 +49,11 @@ function crearColumna(col) {
         </div>
     `;
 
-    columnas.forEach(col => {
-        col.productos = productos.filter(p => p.columnId === col.id);
+    col.productos.forEach(producto => {
+        columnDiv.appendChild(crearArticulo(producto));
     });
 
-    const contenedor = document.getElementById("content");
-    contenedor.innerHTML = "";
-    columnas.forEach(col => contenedor.appendChild(crearColumna(col)));
+    return columnDiv;
 }
 
 function crearArticulo(producto) {
