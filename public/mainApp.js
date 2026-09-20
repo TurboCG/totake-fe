@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     token = localStorage.getItem("token");
 
     if (!token) {
-        window.location.href = "/mainpage.html";
+        // window.location.href = "/mainpage.html";
         return;
     }
 
