@@ -7,14 +7,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="mainApp.js"></script>
 </head>
 <body>
+    <div class="blackOverlayPopup" id="blackOverlayPopup" style="display: none;"></div>
+    <div class="cartPopUp" id="cartPopUp" style="display: none;" >
+        <div class="headerPopup" style="display: flex;">
+            <div style="width: 100%;">
+                <h1 class="lessMargin" style="font-size: 24px;">Carrito</h1>
+                <p class="lessMargin" style="font-size: 16px;">3 elementos</p>
+            </div>
+            <button class="navBarButton" style="display: flex; justify-content: end;" id="closePopUpButton">
+                <img src="res/closePopUpButton.svg" alt="Cerrar" style="width: 60%;">
+            </button>
+        </div>
+        <div class="cartElements">
+            <div class="cartArticleHorizontal" style="display: flex;">
+                <div>
+                    <img src="res/promo/aw.png" alt="" style="width: 64px; height: 64px; object-fit: cover;">
+                    <button id="removeCartElement"  class="navBarButton" style="position: relative; right: 23px; bottom: -6px;">
+                        <img src="res/eraseElementCart.svg" alt="">
+                    </button>
+                </div>
+                <div class="cartArticleTitleDiv" style="width: 70%; justify-content: center; display: flex; flex-direction: column; ">
+                    <p class="cartArticleTitle" style="text-align: end; ">NOMBRE DE PRODUCTO</p>
+                    <p class="cartArticlePrice" style="text-align: end;">$1000</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="headerApp shadow">
         <button class="transparentButton noPadding" >
             <img src="res/logoHeaderApp.svg" alt="" style="width: 20px;">
         </button>
-        
         <div class="searchBar">
             <p class="searchBarSlightlyTransparentTone">Buscar...</p>
             <img src="res/searchIconHeader.svg" alt="Busqueda" class="iconSearchHeader searchBarSlightlyTransparentTone" style="width: 20px;">
@@ -40,7 +64,7 @@
                 <p class="navBarlabel inactive">Menú</p>
             </div>
         </button>
-        <button class="navBarButton">
+        <button class="navBarButton" id="cartButton">
             <div>
                 <img class="navBarButton inactive" src="res/cartIcon.svg" alt="">
                 <p class="navBarlabel inactive">Carrito</p>
@@ -54,4 +78,5 @@
         </button>
     </div>
 </body>
+<script src="mainApp.js"></script>
 </html>

@@ -1,4 +1,6 @@
 let token;
+
+var isCartPopup = false;
 document.addEventListener("DOMContentLoaded", () => {
     token = localStorage.getItem("token");
 
@@ -82,6 +84,18 @@ function crearArticulo(producto) {
 
     return article;
 }
-
+function showCart(){
+    if (isCartPopup){
+        document.getElementById("cartPopUp").style.display="none";
+        document.getElementById("blackOverlayPopup").style.display="none";
+        isCartPopup = false;
+    }else{
+        document.getElementById("cartPopUp").style.display="flex";
+        document.getElementById("blackOverlayPopup").style.display="block";
+        isCartPopup = true;
+    }
+}
 document.addEventListener("DOMContentLoaded", cargarColumnas);
 console.log(token)
+document.getElementById("cartButton").onclick = showCart;
+document.getElementById("closePopUpButton").onclick = showCart;
